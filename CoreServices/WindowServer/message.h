@@ -65,12 +65,8 @@ enum {
     // Input event
     CODE_INPUT_EVENT,           // Notify app of input
 
-    // Window management
-    CODE_WINDOW_CREATE,         // App has created a window
-    CODE_WINDOW_CREATED,        // WS reply to CREATE
-    CODE_WINDOW_DESTROY,        // App has closed a window
-    CODE_WINDOW_DESTROYED,      // WS reply to DESTROY
-    CODE_WINDOW_STATE           // Window state synchronization
+    // Window state change
+    CODE_WINDOW_STATE,
 };
 
 enum {
@@ -110,16 +106,6 @@ struct mach_event {
     uint8_t buttons[3]; // L R M
     double scroll;
     // FIXME: touch and gesture events
-};
-
-/* Intermediate struct for window management */
-struct mach_win_data {
-    uint32_t windowID;
-    double x, y;
-    double w, h;
-    uint32_t style;
-    uint32_t state;
-    char title[128];
 };
 
 struct mach_activation_data {
